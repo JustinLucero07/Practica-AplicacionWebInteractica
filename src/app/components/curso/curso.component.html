@@ -1,0 +1,18 @@
+<section id="cursos">
+    <h2>Lista de Cursos</h2>
+    <div id="listacursos">
+        <ul>
+            <li *ngFor="let curso of cursos">
+                <strong>{{ curso.nombre }}</strong><br>
+                <button (click)="mostrarDetalles(curso.id)">Ver más detalles</button>
+                <button (click)="eliminarCurso(curso.id)" class="eliminar">x</button>
+                <div id="{{ curso.id }}" class="detalles" [style.display]="curso.detalles ? 'block' : 'none'">
+                    <p><strong>Docente:</strong> {{ curso.docente }}</p>
+                    <p><strong>Fecha de Inicio:</strong> {{ curso.fecha }}</p>
+                    <p><strong>Duración:</strong> {{ curso.duracion }} semanas</p>
+                    <p>{{ curso.descripcion }}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
