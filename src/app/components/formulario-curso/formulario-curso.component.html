@@ -3,20 +3,20 @@
     <p>Para agregar el curso se tiene que llenar los siguientes datos</p>
     <form #cursoForm="ngForm" (ngSubmit)="validarYAgregarCurso(cursoForm)">
       <label for="nombre">Nombre del Curso:</label>
-      <input type="text" id="nombre" [(ngModel)]="nuevoCurso.nombre" name="nombre" required placeholder="Nombre">
+      <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" required placeholder="Nombre">
   
       <label for="docente">Docente:</label>
-      <input type="text" id="docente" [(ngModel)]="nuevoCurso.docente" name="docente" required placeholder="Docente">
+      <input type="text" id="docente" [(ngModel)]="docente" name="docente" required placeholder="Docente">
   
       <label for="fecha">Fecha de Inicio:</label>
-      <input type="text" id="fecha" [(ngModel)]="nuevoCurso.fecha" name="fecha" required placeholder="dd/mm/yyyy">
+      <input type="text" id="fecha" [(ngModel)]="fecha" name="fecha" required placeholder="dd/mm/yyyy">
   
       <label for="duracion">Duración:</label>
-      <input type="text" id="duracion" [(ngModel)]="nuevoCurso.duracion" name="duracion" required placeholder="Número de semanas">
+      <input type="text" id="duracion" [(ngModel)]="duracion" name="duracion" required placeholder="Número de semanas">
   
       <label for="descripcion">Descripción:</label>
-      <textarea name="descripcion" id="descripcion" [(ngModel)]="nuevoCurso.descripcion"></textarea>
+      <textarea name="descripcion" id="descripcion" [(ngModel)]="descripcion"></textarea>
   
-      <button type="submit" [disabled]="cursoForm.invalid">Agregar Curso</button>
+      <button type="submit" >Agregar Curso</button>
     </form>
   </section>
