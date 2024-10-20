@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #eaeaea; /* Color de fondo */
+    background-color: #eaeaea;
 }
 
 #titulo{
@@ -13,7 +13,7 @@ body {
 /* Encabezado */
 header {
     position: relative;
-    background-image: url('/public/Imagenes/imagen1.jpeg');  /* Ruta corregida */
+    background-image: url('/Imagenes/imagen1.jpeg');  
     background-size: cover;
     background-position: center;
     padding: 20px;
