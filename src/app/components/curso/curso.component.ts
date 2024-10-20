@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FormularioCursoComponent } from '../formulario-curso/formulario-curso.component';
 import { RouterModule } from '@angular/router';
 import { ServicioCursoService } from '../../services/servicio-curso.service';
-import { isPlatformBrowser } from '@angular/common';  
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-curso',
@@ -59,16 +59,16 @@ export class CursoComponent implements OnInit {
   ];
 
   constructor(
-    private servicioCurso: ServicioCursoService, 
-    @Inject(PLATFORM_ID) private platformId: Object  
-  ) {}
+    private servicioCurso: ServicioCursoService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   async ngOnInit(): Promise<void> {
     await this.cargarCursos();
   }
 
   async cargarCursos(): Promise<void> {
-    if (isPlatformBrowser(this.platformId)) {  
+    if (isPlatformBrowser(this.platformId)) {
       const cursosGuardados = localStorage.getItem('listacursos');
       if (cursosGuardados) {
         this.cursos = JSON.parse(cursosGuardados);
@@ -83,7 +83,7 @@ export class CursoComponent implements OnInit {
   }
 
   limpiarLocalStorage(): void {
-    if (isPlatformBrowser(this.platformId)) { 
+    if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('listacursos');
       this.cursos = [];
       console.log('LocalStorage y lista de cursos limpiados.');
@@ -93,7 +93,7 @@ export class CursoComponent implements OnInit {
   @ViewChild('formulario') formulario!: FormularioCursoComponent;
 
   async guardar(curso: any): Promise<void> {
-    if (isPlatformBrowser(this.platformId)) { 
+    if (isPlatformBrowser(this.platformId)) {
       const imagenPerro = await this.servicioCurso.getFotoPerro2();
       curso.imagen = imagenPerro;
       this.cursos.push(curso);

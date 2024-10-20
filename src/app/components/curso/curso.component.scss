@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #eaeaea; /* Color de fondo */
+    background-color: #eaeaea; 
 }
 
 #titulo{
@@ -26,7 +26,21 @@ header {
     background-size: 100%; 
 }
 
-/* Capa de color sobre la imagen */
+.slideOut {
+    animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+    100% {
+        transform: translateX(100%); 
+        opacity: 0; 
+    }
+}
+
 header::before {
     content: "";
     position: absolute;
@@ -40,18 +54,15 @@ header::before {
     transition: opacity 0.5s ease-in-out;
 }
 
-/* Para que el contenido (texto) esté por encima de la capa de color */
 header * {
     position: relative;
     z-index: 2;
 }
 
-/* Efecto de hover (cuando el mouse pasa sobre el encabezado) */
 header:hover::before {
     opacity: 0.6; 
 }
 
-/* Efecto de zoom en la imagen de fondo al hacer hover */
 header:hover {
     background-size: 110%; 
     transform: scale(1.05); 
@@ -94,13 +105,11 @@ section {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
 }
 
-/* Efecto de desplazamiento al hacer hover */
 section:hover {
     transform: translateY(-5px); 
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Títulos de las secciones */
 section h2 {
     font-size: 32px; 
     color: black; 
@@ -109,7 +118,6 @@ section h2 {
     padding-bottom: 10px; 
 }
 
-/* Estilo para los párrafos dentro de las secciones */
 section p {
     font-size: 16px; 
     color: #555; 
@@ -117,7 +125,6 @@ section p {
     margin-bottom: 20px; 
 }
 
-/* Inputs */
 input[type="text"], input[type="email"], textarea {
     width: 93%; 
     padding: 10px; 
@@ -127,19 +134,16 @@ input[type="text"], input[type="email"], textarea {
     font-size: 16px; 
 }
 
-/* Cambiar color cuando el input está en foco */
 input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
     border-color: #2980b9; 
     background-color: #eaf5fc; 
     outline: none; 
 }
 
-/* Efecto al pasar el cursor sobre el botón */
 section .btn:hover {
     background-color: #1a6e9f; 
 }
 
-/* Lista de cursos */
 #cursos {
     padding: 20px;
 }
@@ -153,7 +157,6 @@ section .btn:hover {
     padding: 0;
 }
 
-/* Estilo para cada elemento del curso */
 #listacursos li {
     background-color: #f4f4f4;
     border: 1px solid #ddd;
@@ -245,37 +248,34 @@ form button:hover {
     background-color: #ac8d3f; 
 }
 
-/* Detalles */
 .detalles {
-    display: none; /* Oculto por defecto */
+    display: none; 
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     margin-top: 10px;
     opacity: 0;
-    transform: scale(0.95); /* Tamaño reducido al inicio */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Animación suave */
+    transform: scale(0.95); 
+    transition: opacity 0.3s ease, transform 0.3s ease; 
 }
 
 .detalles.show {
     display: block;
     opacity: 1;
-    transform: scale(1); /* Crece suavemente */
+    transform: scale(1); 
 }
 
-/* Estilo de los párrafos en detalles */
 .detalles p {
     font-size: 15px; 
     color: #555;
     margin: 5px 0;
     line-height: 1.5;
-    transition: color 0.3s ease; /* Transición para color */
+    transition: color 0.3s ease;
 }
 
-/* Estilo del botón "Ver más detalles" */
 button {
-    background-color: #d1b74b; /*Color botón detalles*/
+    background-color: #d1b74b; 
     color: white;
     border: none;
     padding: 10px 15px;
@@ -283,18 +283,17 @@ button {
     text-decoration: none;
     display: inline-block;
     margin-top: 10px;
-    margin-left: 5px; /* Mueve el botón 5 píxeles a la derecha */
+    margin-left: 5px; 
     cursor: pointer;
     border-radius: 10px;
     font-size: 1em;
-    font-family: 'Georgia', serif; /* Fuente elegante */
+    font-family: 'Georgia', serif; 
 }
 
 button:hover {
-    background-color: #ac8d3f; /* Color más brillante al pasar el cursor */
+    background-color: #ac8d3f; 
 }
 
-/* Botón de eliminar x oculto por defecto */
 .eliminar {
     background-color: #ccc;
     color: white;
@@ -311,14 +310,13 @@ button:hover {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Mostrar la x cuando el li se agranda */
 #listacursos li:hover .eliminar {
     display: inline-block;
 }
 
 .eliminar:hover {
-    background-color: #e74c3c; /* Color al pasar el mouse */
-    transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+    background-color: #e74c3c; 
+    transform: scale(1.1); 
 }
 
 /* Footer */
@@ -330,16 +328,14 @@ footer {
     position: relative;
     bottom: 0;
     width: 97.3%;
-    box-shadow: 0 -1px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    box-shadow: 0 -1px 15px rgba(0, 0, 0, 0.2); 
 }
 
-/* Estilo para los campos con error */
 input.error, textarea.error {
     border: 2px solid red; 
-    background-color: #ffe6e6; /* Fondo ligeramente rojo */
+    background-color: #ffe6e6; 
 }
 
-/* Estilo para mostrar un mensaje de error debajo del campo */
 .error-message {
     color: red;
     font-size: 0.85em;

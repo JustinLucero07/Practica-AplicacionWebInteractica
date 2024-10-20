@@ -23,7 +23,6 @@ export class FormularioCursoComponent implements OnInit {
   }
 
   agregarCurso(): void {
-    // Limpiar errores previos
     this.limpiarErrores();
 
     let isValid = true;

@@ -2,7 +2,7 @@
   <h2>Lista de Cursos</h2>
   <div id="listacursos">
     <ul>
-      <li *ngFor="let curso of cursos; let i = index">
+      <li *ngFor="let curso of cursos; let i = index" [id]="'curso-' + i">
         <strong>{{ curso.nombre }}</strong><br>
         <button (click)="mostrarDetalles(curso)">Ver más detalles</button>
         <button (click)="eliminarCurso(curso)" class="eliminar">x</button>
