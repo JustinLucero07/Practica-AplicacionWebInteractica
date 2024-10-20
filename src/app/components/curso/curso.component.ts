@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FormularioCursoComponent } from '../formulario-curso/formulario-curso.component';
 import { RouterModule } from '@angular/router';
 import { ServicioCursoService } from '../../services/servicio-curso.service';
+import { isPlatformBrowser } from '@angular/common';  
 
 @Component({
   selector: 'app-curso',
@@ -57,48 +58,58 @@ export class CursoComponent implements OnInit {
     }
   ];
 
-  constructor(private servicioCurso: ServicioCursoService) {}
+  constructor(
+    private servicioCurso: ServicioCursoService, 
+    @Inject(PLATFORM_ID) private platformId: Object  
+  ) {}
 
   async ngOnInit(): Promise<void> {
-    await this.cargarCursos(); 
+    await this.cargarCursos();
   }
 
   async cargarCursos(): Promise<void> {
-    const cursosGuardados = localStorage.getItem('listacursos');
-    if (cursosGuardados) {
-      this.cursos = JSON.parse(cursosGuardados);
-    } else {
-      for (let curso of this.cursos) {
-        const imagenPerro = await this.servicioCurso.getFotoPerro2();
-        curso.imagen = imagenPerro;  
+    if (isPlatformBrowser(this.platformId)) {  
+      const cursosGuardados = localStorage.getItem('listacursos');
+      if (cursosGuardados) {
+        this.cursos = JSON.parse(cursosGuardados);
+      } else {
+        for (let curso of this.cursos) {
+          const imagenPerro = await this.servicioCurso.getFotoPerro2();
+          curso.imagen = imagenPerro;
+        }
+        localStorage.setItem('listacursos', JSON.stringify(this.cursos));
       }
-      localStorage.setItem('listacursos', JSON.stringify(this.cursos));
     }
   }
 
   limpiarLocalStorage(): void {
-    localStorage.removeItem('listacursos');
-    this.cursos = [];
-    console.log('LocalStorage y lista de cursos limpiados.');
+    if (isPlatformBrowser(this.platformId)) { 
+      localStorage.removeItem('listacursos');
+      this.cursos = [];
+      console.log('LocalStorage y lista de cursos limpiados.');
+    }
   }
 
   @ViewChild('formulario') formulario!: FormularioCursoComponent;
 
   async guardar(curso: any): Promise<void> {
-    const imagenPerro = await this.servicioCurso.getFotoPerro2();
-    curso.imagen = imagenPerro;
-    this.cursos.push(curso);
-    let cursosGuardados = localStorage.getItem('listacursos');
-    let cursos = cursosGuardados ? JSON.parse(cursosGuardados) : [];
-    cursos.push(curso);
-    localStorage.setItem('listacursos', JSON.stringify(cursos));
-    this.formulario.limpiarFormulario();
+    if (isPlatformBrowser(this.platformId)) { 
+      const imagenPerro = await this.servicioCurso.getFotoPerro2();
+      curso.imagen = imagenPerro;
+      this.cursos.push(curso);
+      let cursosGuardados = localStorage.getItem('listacursos');
+      let cursos = cursosGuardados ? JSON.parse(cursosGuardados) : [];
+      cursos.push(curso);
+      localStorage.setItem('listacursos', JSON.stringify(cursos));
+      this.formulario.limpiarFormulario();
+    }
   }
-  
 
   eliminarCurso(curso: any): void {
-    this.cursos = this.cursos.filter(c => c !== curso);
-    localStorage.setItem('listacursos', JSON.stringify(this.cursos));
+    if (isPlatformBrowser(this.platformId)) { 
+      this.cursos = this.cursos.filter(c => c !== curso);
+      localStorage.setItem('listacursos', JSON.stringify(this.cursos));
+    }
   }
 
   getDetallesId(curso: any): string {
