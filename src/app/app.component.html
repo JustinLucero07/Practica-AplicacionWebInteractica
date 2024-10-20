@@ -1,35 +1,22 @@
-<body>
-  <header>
-      <h1 id="titulo">Cursos</h1>
-      <nav>
-          <ul>
-              <li><a href="#inicio">Inicio</a></li>
-              <li><a href="#cursos">Cursos</a></li>
-              <li><a href="#agregar">Agregar Curso</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-          </ul>
-      </nav>
-  </header>
+<header>
+    <h1 id="titulo">Cursos</h1>
+    <nav>
+        <ul>
+            <router-outlet />
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#cursos">Cursos</a></li>
+            <li><a href="#agregar">Agregar Curso</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
 
-  <section id="inicio">
-      <h2>Bienvenido a los Cursos</h2>
-      <p>Bienvenido te brindaremos un acceso a una amplia variedad de cursos que te ayudarán a expandir tus conocimientos y habilidades. Ya seas un estudiante entusiasta, un profesional en busca de nuevos aprendizajes, o simplemente alguien curioso por adquirir nuevas competencias, ¡tenemos algo para ti!
+<app-inicio></app-inicio>
 
-          Navega a través de nuestra lista de cursos, descubre lo que ofrecemos, y no dudes en agregar nuevos cursos que desees. Nuestro objetivo es facilitar tu proceso de aprendizaje y hacer que tu experiencia sea lo más enriquecedora posible.
-          
-          ¡Comienza tu viaje educativo con nosotros hoy mismo!</p>
-  </section>
+<app-curso></app-curso>
 
-  <app-curso></app-curso>
-  <app-formulario-curso></app-formulario-curso>
+<app-contacto></app-contacto>
 
-  <footer id="contacto">
-      <h2>Contacto</h2>
-      <p>Telefono: 0992555864</p>
-      <p>Contacto: justinlucerojl03gmail.com</p>
-  </footer>
+<script src="index.js"></script>
 
-  <script src="index.js"></script>
-</body>
 
-<router-outlet />

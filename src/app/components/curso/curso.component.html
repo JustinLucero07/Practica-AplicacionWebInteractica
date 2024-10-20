@@ -4,15 +4,17 @@
     <ul>
       <li *ngFor="let curso of cursos; let i = index">
         <strong>{{ curso.nombre }}</strong><br>
-        <button (click)="mostrarDetalles(i)">Ver más detalles</button>
-        <button (click)="eliminarCurso(i)" class="eliminar">x</button>
-        <div class="detalles">
+        <button (click)="mostrarDetalles(curso)">Ver más detalles</button>
+        <button (click)="eliminarCurso(curso)" class="eliminar">x</button>
+        <div id="{{ getDetallesId(curso) }}" style="display: none;" class="detalles">
           <p><strong>Docente:</strong> {{ curso.docente }}</p>
           <p><strong>Fecha de Inicio:</strong> {{ curso.fecha }}</p>
           <p><strong>Duración:</strong> {{ curso.duracion }} semanas</p>
           <p>{{ curso.descripcion }}</p>
+          <img src="{{curso.imagen}}" alt="Imagen del curso" width="100px"/>
         </div>
       </li>
     </ul>
   </div>
 </section>
+<app-formulario-curso #formulario (nform)="guardar($event)"></app-formulario-curso>

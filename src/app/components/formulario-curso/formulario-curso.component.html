@@ -1,7 +1,7 @@
 <section id="agregar">
     <h2>Agregar Nuevo Curso</h2>
     <p>Para agregar el curso se tiene que llenar los siguientes datos</p>
-    <form #cursoForm="ngForm" (ngSubmit)="validarYAgregarCurso(cursoForm)">
+    <form>
       <label for="nombre">Nombre del Curso:</label>
       <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" required placeholder="Nombre">
   
@@ -15,8 +15,8 @@
       <input type="text" id="duracion" [(ngModel)]="duracion" name="duracion" required placeholder="Número de semanas">
   
       <label for="descripcion">Descripción:</label>
-      <textarea name="descripcion" id="descripcion" [(ngModel)]="descripcion"></textarea>
+      <textarea type="text" name="descripcion" id="descripcion" [(ngModel)]="descripcion"></textarea>
   
-      <button type="submit" >Agregar Curso</button>
+      <button (click)="agregarCurso()" >Agregar Curso</button>
     </form>
   </section>
