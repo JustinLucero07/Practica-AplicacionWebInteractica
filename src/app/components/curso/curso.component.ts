@@ -74,7 +74,7 @@ export class CursoComponent implements OnInit {
         this.cursos = JSON.parse(cursosGuardados);
       } else {
         for (let curso of this.cursos) {
-          const imagenPerro = await this.servicioCurso.getFotoPerro2();
+          const imagenPerro = await this.servicioCurso.getCurso();
           curso.imagen = imagenPerro;
         }
         localStorage.setItem('listacursos', JSON.stringify(this.cursos));
@@ -94,7 +94,7 @@ export class CursoComponent implements OnInit {
 
   async guardar(curso: any): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
-      const imagenPerro = await this.servicioCurso.getFotoPerro2();
+      const imagenPerro = await this.servicioCurso.getCurso();
       curso.imagen = imagenPerro;
       this.cursos.push(curso);
       let cursosGuardados = localStorage.getItem('listacursos');
